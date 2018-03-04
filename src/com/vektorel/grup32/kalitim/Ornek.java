@@ -22,6 +22,8 @@ public class Ornek {
         k.maasHesapla();
         
         Stajyer s=new Stajyer();
+       
+        
         
     }
 }
