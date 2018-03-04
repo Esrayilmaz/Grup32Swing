@@ -9,6 +9,9 @@ package com.vektorel.grup32.kalitim;
  *
  * @author vektorel
  */
-public class Mudur extends Kisi{
+public class Mudur extends Muhendis {
     
+    public void yonet(){
+        System.out.println("Yönetiliyor");
+    }
 }

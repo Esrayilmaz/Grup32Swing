@@ -13,6 +13,7 @@ public class Ornek {
     public void ornek(){
         Mudur mudur =new Mudur();
         mudur.maasHesapla();
+        mudur.yonet();
         
         Muhendis muhendis =new Muhendis();
         muhendis.maasHesapla();
@@ -22,8 +23,6 @@ public class Ornek {
         k.maasHesapla();
         
         Stajyer s=new Stajyer();
-       
-        
-        
+      
     }
 }
