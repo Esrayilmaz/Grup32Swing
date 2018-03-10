@@ -5,14 +5,30 @@
  */
 package com.vektorel.grup32.kalitim;
 
+import java.util.Date;
+
 
 /**
  *
  * @author vektorel
  */
 public class Kisi {
+
+    public Kisi() {
+    }
+
+    public Kisi(Long no, String ad, String soyad, Date dogumTarihi) {
+        this.no = no;
+        this.ad = ad;
+        this.soyad = soyad;
+        this.dogumTarihi = dogumTarihi;
+    }
+            
+    private Long no;
     private String ad;
     private String soyad;
+    private Date dogumTarihi;
+    
 
     public String getAd() {
         return ad;
@@ -29,10 +45,21 @@ public class Kisi {
     public void setSoyad(String soyad) {
         this.soyad = soyad;
     }
-    
-       
-    
-    public void maasHesapla(){
-        System.out.println("Maaş : 12.56 €"); 
+
+    public Long getNo() {
+        return no;
     }
+
+    public void setNo(Long no) {
+        this.no = no;
+    }
+
+    public Date getDogumTarihi() {
+        return dogumTarihi;
+    }
+
+    public void setDogumTarihi(Date dogumTarihi) {
+        this.dogumTarihi = dogumTarihi;
+    }
+    
 }

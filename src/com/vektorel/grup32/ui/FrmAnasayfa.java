@@ -33,6 +33,7 @@ public class FrmAnasayfa extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         mnIslemler = new javax.swing.JMenu();
         mnMDIOrnek = new javax.swing.JMenuItem();
+        mItemKisi = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -46,6 +47,15 @@ public class FrmAnasayfa extends javax.swing.JFrame {
             }
         });
         mnIslemler.add(mnMDIOrnek);
+
+        mItemKisi.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, 0));
+        mItemKisi.setText("Kişi İşlemleri");
+        mItemKisi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mItemKisiActionPerformed(evt);
+            }
+        });
+        mnIslemler.add(mItemKisi);
 
         jMenuBar1.add(mnIslemler);
 
@@ -70,9 +80,15 @@ public class FrmAnasayfa extends javax.swing.JFrame {
        frmMDIOrnek.setVisible(true);
     }//GEN-LAST:event_mnMDIOrnekActionPerformed
 
+    private void mItemKisiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemKisiActionPerformed
+        FrmKisiListe fkl =new FrmKisiListe();
+        fkl.setVisible(true);
+    }//GEN-LAST:event_mItemKisiActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem mItemKisi;
     private javax.swing.JMenu mnIslemler;
     private javax.swing.JMenuItem mnMDIOrnek;
     // End of variables declaration//GEN-END:variables

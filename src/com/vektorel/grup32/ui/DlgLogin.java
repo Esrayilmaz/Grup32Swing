@@ -20,7 +20,6 @@ public class DlgLogin extends javax.swing.JDialog {
     public DlgLogin(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        this.setOpacity(TOP_ALIGNMENT);
     }
 
     /**

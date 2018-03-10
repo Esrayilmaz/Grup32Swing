@@ -5,7 +5,7 @@
  */
 package com.vektorel.grup32;
 
-import com.vektorel.grup32.kalitim.Ornek;
+import com.vektorel.grup32.dosya.DosyaIslemleri;
 import com.vektorel.grup32.ui.DlgLogin;
 
 /**
@@ -15,10 +15,8 @@ import com.vektorel.grup32.ui.DlgLogin;
 public class App {
     public static void main(String[] args) {
         System.out.println("Application is started..");
-        Ornek ornek =new Ornek();
-        ornek.ornek();
-//        DlgLogin dl=new DlgLogin(null, true);
-//        dl.setLocationRelativeTo(null);
-//        dl.setVisible(true);
+        DlgLogin dl=new DlgLogin(null, true);
+        dl.setLocationRelativeTo(null);
+        dl.setVisible(true);
     }
 }
