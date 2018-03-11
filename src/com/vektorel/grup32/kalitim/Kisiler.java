@@ -6,6 +6,7 @@
 package com.vektorel.grup32.kalitim;
 
 import com.vektorel.grup32.dosya.DosyaIslemleri;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -17,10 +18,10 @@ import java.util.List;
 public class Kisiler {
     
     public static List<Kisi> kisiListesi =new ArrayList<>();
-    
+    DosyaIslemleri di =new DosyaIslemleri();
     
     public void listeyiYukle(){
-        DosyaIslemleri di =new DosyaIslemleri();
+        
         String icerik = di.dosyadanOku();
         kisiListesi.clear();
         
@@ -34,6 +35,15 @@ public class Kisiler {
             String dogumTarihi = kisiDetayStringleri[3];
             kisiListesi.add(new Kisi(Long.parseLong(no), ad, soyad, new Date(dogumTarihi)));
         }
+    }
+
+    public void listeyiYedekle() {
+        StringBuilder builder =new StringBuilder();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyyy");
+        for (Kisi kisi : kisiListesi) {
+           builder.append(kisi.getNo()+"|"+kisi.getAd()+"|"+kisi.getSoyad()+"|"+sdf.format(kisi.getDogumTarihi())+"@");
+        }      
+        di.dosyayaYaz(builder.toString());
     }
     
 }

@@ -5,7 +5,9 @@
  */
 package com.vektorel.grup32.ui;
 
+import com.vektorel.grup32.kalitim.Kisi;
 import com.vektorel.grup32.kalitim.Kisiler;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -14,12 +16,12 @@ import javax.swing.table.DefaultTableModel;
  */
 public class FrmKisiListe extends javax.swing.JFrame {
 
+    Kisiler kisiler =new Kisiler();
     /**
      * Creates new form FrmKisiListe
      */
     public FrmKisiListe() {
         initComponents();
-        Kisiler kisiler =new Kisiler();
         kisiler.listeyiYukle();
         kisiListele();
     }
@@ -40,6 +42,11 @@ public class FrmKisiListe extends javax.swing.JFrame {
         btnYeni = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         tblKisi.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -56,10 +63,25 @@ public class FrmKisiListe extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tblKisi);
 
         btnSil.setText("Sil");
+        btnSil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSilActionPerformed(evt);
+            }
+        });
 
         btnGuncelle.setText("Güncelle");
+        btnGuncelle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuncelleActionPerformed(evt);
+            }
+        });
 
         btnYeni.setText("Yeni");
+        btnYeni.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnYeniActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -92,6 +114,38 @@ public class FrmKisiListe extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+      kisiler.listeyiYedekle();
+    }//GEN-LAST:event_formWindowClosing
+
+    private void btnYeniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnYeniActionPerformed
+        DlgKisi dk=new DlgKisi(this, true);
+        dk.setVisible(true);
+        kisiListele();
+    }//GEN-LAST:event_btnYeniActionPerformed
+
+    private void btnSilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSilActionPerformed
+        int selectedRowIndex = tblKisi.getSelectedRow();
+        if(selectedRowIndex!=-1){
+            Kisi kisi = Kisiler.kisiListesi.get(selectedRowIndex);
+            int yesNoResult = JOptionPane.showConfirmDialog(this, kisi.getNo() + " numaralı kişiyi silmek ");
+            if(yesNoResult==0){
+                 Kisiler.kisiListesi.remove(selectedRowIndex);
+                 kisiListele();
+            }
+        }
+    }//GEN-LAST:event_btnSilActionPerformed
+
+    private void btnGuncelleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuncelleActionPerformed
+         int selectedRowIndex = tblKisi.getSelectedRow();
+        if(selectedRowIndex!=-1){
+            Kisi kisi = Kisiler.kisiListesi.get(selectedRowIndex);
+            DlgKisi dk=new DlgKisi(this, true,kisi,selectedRowIndex);
+            dk.setVisible(true);
+            kisiListele();
+        }
+    }//GEN-LAST:event_btnGuncelleActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -5,7 +5,9 @@
  */
 package com.vektorel.grup32.dosya;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.util.Scanner;
 
 /**
@@ -31,6 +33,16 @@ public class DosyaIslemleri {
         return "";
     }
 
+    public void dosyayaYaz(String icerik) {
+        try {
+            FileWriter fw = new FileWriter(dosya, false);
+            BufferedWriter writer = new BufferedWriter(fw);
+            writer.write(icerik );
+            writer.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 //    public void stringTest() {
 //        System.out.println(System.currentTimeMillis());
 //        String d = "";
